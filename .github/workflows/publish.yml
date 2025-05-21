@@ -50,8 +50,5 @@ jobs:
           NODE_AUTH_TOKEN: ${{ secrets.SCRIPTLANE_GITHUB_ACTIONS_TOKEN }}
         run: npm publish --access public
 
-      - name: 🏁 Summarize release
-        run: echo "### Published version: \`${GITHUB_REF_NAME}\` :tada:" >> $GITHUB_STEP_SUMMARY
-
       - name: ✅ Done!
         run: echo "✅ Deployment complete!"

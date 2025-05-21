@@ -1,6 +1,6 @@
 {
   "name": "@galfrevn/scriptlane",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "description": "A modern CLI multiplexer for running, grouping, and managing project scripts with style.",
   "bin": {
     "scriptlane": "dist/index.js"

@@ -17,7 +17,7 @@ export function groupScriptsByGroupName(scripts: ScriptsConfiguration) {
     (groupsAccumulator, [scriptName, scriptConfiguration]) => {
       const currentGroupName = scriptConfiguration.group || DEFAULT_GROUP_NAME;
       const currentGroup = groupsAccumulator.find(
-        (group) => group.name === currentGroupName
+        (group) => group.name === currentGroupName,
       );
 
       if (!currentGroup) {
@@ -39,11 +39,12 @@ export function groupScriptsByGroupName(scripts: ScriptsConfiguration) {
       currentGroup.items.push({
         name: scriptName,
         command: scriptConfiguration.cmd,
-        description: scriptConfiguration.description || DEFAULT_GROUP_DESCRIPTION,
+        description:
+          scriptConfiguration.description || DEFAULT_GROUP_DESCRIPTION,
       });
 
       return groupsAccumulator;
     },
-    [] as Array<GroupedScripts>
+    [] as Array<GroupedScripts>,
   );
 }

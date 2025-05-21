@@ -10,7 +10,7 @@ export async function run() {
 
   let packageJsonScripts = await loadPackageJsonScripts();
   const configuredScripts = await loadConfigurationFile(
-    context.configurationFilePath
+    context.configurationFilePath,
   );
 
   if (context.isHidingPackageJsonScripts) {

@@ -26,12 +26,12 @@ export async function renderScriptSelectionUI({
   customization,
 }: RenderScriptSelectionUIProps) {
   const { showGroups, showScriptName, showScriptDescription } = customization;
-  
+
   const context = getRunningContext();
   const preset = getCurrentPreset(context.currentPreset);
 
   const groups = groupScriptsByGroupName(scripts);
-  
+
   // State
   let checked: Record<number, Set<number>> = {};
   for (let i = 0; i < groups.length; i++) checked[i] = new Set();
@@ -53,7 +53,7 @@ export async function renderScriptSelectionUI({
   const left = blessed.list({
     parent: screen,
     label: chalk.bold.black(" Groups "),
-    width: "15%",
+    width: "20%",
     height: "100%-2",
     border: "line",
     scrollable: true,
@@ -78,7 +78,7 @@ export async function renderScriptSelectionUI({
   const center = blessed.list({
     parent: screen,
     label: chalk.bold.white(" Commands "),
-    left: "15%",
+    left: "20%",
     width: "45%",
     height: "70%-2",
     border: "line",
@@ -104,7 +104,7 @@ export async function renderScriptSelectionUI({
   const descBox = blessed.box({
     parent: screen,
     top: "70%-2",
-    left: "15%",
+    left: "20%",
     width: "45%",
     height: "30%",
     border: "line",
@@ -119,7 +119,7 @@ export async function renderScriptSelectionUI({
   const selectedBox = blessed.list({
     parent: screen,
     label: chalk.bold.black(" Selected "),
-    left: "60%",
+    left: "65%",
     width: "30%",
     height: "100%-2",
     border: "line",
@@ -151,7 +151,7 @@ export async function renderScriptSelectionUI({
           return chalk.bgBlack.bold(`➜ ${g.name}`);
         }
         return chalk.white(`➜ ${g.name}`);
-      })
+      }),
     );
     left.selected = leftSelected;
   }
@@ -167,7 +167,7 @@ export async function renderScriptSelectionUI({
           label = chalk.bgBlack.white(item.name);
         }
         return `${prefix} ${label}`;
-      })
+      }),
     );
     center.selected = centerSelected;
   }
@@ -191,7 +191,7 @@ export async function renderScriptSelectionUI({
       });
     }
     selectedBox.setItems(
-      items.length > 0 ? items : [chalk.gray("No commands selected")]
+      items.length > 0 ? items : [chalk.gray("No commands selected")],
     );
   }
 
@@ -342,7 +342,7 @@ export async function showConcurrentRunUI({
   const left = blessed.list({
     parent: screen,
     label: chalk.bold.black(" Running "),
-    width: "15%",
+    width: "20%",
     height: "100%-2",
     border: "line",
     style: {
@@ -358,14 +358,14 @@ export async function showConcurrentRunUI({
         chalk.yellow(`${c.group}:`) +
         " " +
         chalk.white(c.name) +
-        (finished[idx] ? chalk.green(" ✔") : "")
+        (finished[idx] ? chalk.green(" ✔") : ""),
     ),
   });
 
   const logBox = blessed.box({
     parent: screen,
-    left: "15%",
-    width: "85%",
+    left: "20%",
+    width: "80%",
     height: "100%-2",
     border: "line",
     label: chalk.bold.black(" Logs "),
@@ -398,15 +398,16 @@ export async function showConcurrentRunUI({
     style: { fg: "gray", bg: "black" },
     tags: true,
     content: chalk.gray(
-      "Press {bold}b{/bold} to go back to script selection • {bold}q{/bold} to quit"
+      "Press {bold}b{/bold} to go back to script selection • {bold}q{/bold} to quit",
     ),
   });
 
   const finishedBox = blessed.box({
     parent: screen,
-    left: "15%",
+    left: "20%",
     top: "100%-5", // position below log
-    width: "85%",
+    width: "80%",
+    label: chalk.bold.green(" Output "),
     height: 3,
     border: "line",
     hidden: true,
@@ -440,15 +441,15 @@ export async function showConcurrentRunUI({
           selectedIdx === idx
             ? check +
               chalk.bgBlack.white(
-                getScrollingLabel(raw, displayWidth, scrollOffset)
+                getScrollingLabel(raw, displayWidth, scrollOffset),
               )
             : check + chalk.white(getScrollingLabel(raw, displayWidth, 0));
         return visible;
-      })
+      }),
     );
     left.selected = selectedIdx;
     logBox.setContent(
-      output[selectedIdx].join("") || chalk.gray("Waiting for output...\n")
+      output[selectedIdx].join("") || chalk.gray("Waiting for output...\n"),
     );
 
     if (shouldResetLogScroll && !userScrolling) {
@@ -462,7 +463,7 @@ export async function showConcurrentRunUI({
   function getScrollingLabel(
     text: string,
     width: number,
-    offset: number
+    offset: number,
   ): string {
     if (text.length <= width) {
       return text; // No scrolling needed
@@ -504,11 +505,11 @@ export async function showConcurrentRunUI({
   function updateRunHelp() {
     if (focusedPanel === "left") {
       runHelp.setContent(
-        chalk.gray("←/→ switch panel  ↑/↓ select command  b: back  q: quit")
+        chalk.gray("←/→ switch panel  ↑/↓ select command  b: back  q: quit"),
       );
     } else {
       runHelp.setContent(
-        chalk.gray("←/→ switch panel  ↑/↓ scroll log  b: back  q: quit")
+        chalk.gray("←/→ switch panel  ↑/↓ scroll log  b: back  q: quit"),
       );
     }
     screen.render();
@@ -538,7 +539,7 @@ export async function showConcurrentRunUI({
     userScrolling = false;
     shouldResetLogScroll = true;
     logBox.setContent(
-      output[currentLogIdx].join("") || chalk.gray("Waiting for output...\n")
+      output[currentLogIdx].join("") || chalk.gray("Waiting for output...\n"),
     );
     renderLogs(leftSelected);
     screen.render();
@@ -571,7 +572,7 @@ export async function showConcurrentRunUI({
         currentLogIdx = leftSelected;
         logBox.setContent(
           output[currentLogIdx].join("") ||
-            chalk.gray("Waiting for output...\n")
+            chalk.gray("Waiting for output...\n"),
         );
         logBox.setScrollPerc(100); // Always show latest by default
         renderLogs(leftSelected);
@@ -584,7 +585,7 @@ export async function showConcurrentRunUI({
         currentLogIdx = leftSelected;
         logBox.setContent(
           output[currentLogIdx].join("") ||
-            chalk.gray("Waiting for output...\n")
+            chalk.gray("Waiting for output...\n"),
         );
         logBox.setScrollPerc(100);
         renderLogs(leftSelected);
@@ -622,8 +623,8 @@ export async function showConcurrentRunUI({
     if (processesRunning) {
       runHelp.setContent(
         chalk.red(
-          "Cannot go back while commands are running! Wait until all finish."
-        )
+          "Cannot go back while commands are running! Wait until all finish.",
+        ),
       );
       screen.render();
       return;
@@ -669,8 +670,8 @@ export async function showConcurrentRunUI({
             if (idx === leftSelected) renderLogs(leftSelected);
             resolve();
           });
-        })
-    )
+        }),
+    ),
   );
 
   // All done: mark as finished, let user quit
@@ -679,8 +680,8 @@ export async function showConcurrentRunUI({
   adjustLogBoxHeight(true);
   finishedBox.setContent(
     chalk.green.bold(
-      "✔ All commands finished! Press Q to quit or {bold}b{/bold} to go back."
-    )
+      "✔ All commands finished! Press Q to quit or {bold}b{/bold} to go back.",
+    ),
   );
   finishedBox.show();
   screen.render();

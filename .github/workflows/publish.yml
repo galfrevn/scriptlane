@@ -3,7 +3,7 @@ name: 🚀 Publish Scriptlane to npm
 on:
   push:
     tags:
-      - 'v*.*.*'
+      - "v*.*.*"
   workflow_dispatch:
 
 jobs:
@@ -19,7 +19,7 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: 20
-          registry-url: 'https://registry.npmjs.org/'
+          registry-url: "https://registry.npmjs.org/"
 
       - name: 📦 Restore npm cache
         uses: actions/cache@v4
@@ -47,8 +47,13 @@ jobs:
 
       - name: 🚀 Publish to npm
         env:
-          NODE_AUTH_TOKEN: ${{ secrets.SCRIPTLANE_GITHUB_ACTIONS_TOKEN }}
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: npm publish --access public
 
-      - name: ✅ Done!
-        run: echo "✅ Deployment complete!"
+      - name: 🎉 Success Message
+        if: success()
+        run: echo "✅ Published version ${{ steps.version-check.outputs.TAG_VERSION }} to npm!"
+
+      - name: ❌ Failure Message
+        if: failure()
+        run: echo "❌ Publish failed. Check the logs above."

@@ -1,0 +1,62 @@
+{
+  "name": "@galfrevn/scriptlane",
+  "version": "0.0.1",
+  "description": "A modern CLI multiplexer for running, grouping, and managing project scripts with style.",
+  "bin": {
+    "scriptlane": "dist/index.js"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "files": [
+    "dist"
+  ],
+  "scripts": {
+    "dev": "tsup src/index.ts --watch --sourcemap",
+    "build": "tsup src/index.ts --format esm,cjs --dts --sourcemap",
+    "lint": "eslint src --ext .ts",
+    "test": "vitest run",
+    "prepare": "npm run build"
+  },
+  "keywords": [
+    "cli",
+    "scripts",
+    "multiplexer",
+    "task-runner",
+    "automation",
+    "devtools",
+    "typescript",
+    "blessed",
+    "concurrent"
+  ],
+  "author": {
+    "name": "Valentin Galfré",
+    "email": "galfre.vn@gmail.com",
+    "url": "https://galfrevn.com"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/galfrevn/scriptlane.git"
+  },
+  "bugs": {
+    "url": "https://github.com/galfrevn/scriptlane/issues"
+  },
+  "homepage": "https://github.com/galfrevn/scriptlane#readme",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "blessed": "^0.1.81",
+    "chalk": "^5.4.1",
+    "yargs": "^17.7.2"
+  },
+  "devDependencies": {
+    "@types/blessed": "^0.1.25",
+    "@types/inquirer": "^9.0.8",
+    "@types/node": "^22.15.20",
+    "@types/yargs": "^17.0.33",
+    "tsup": "^8.5.0",
+    "typescript": "^5.8.3",
+    "vitest": "^3.1.4"
+  }
+}

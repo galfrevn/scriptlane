@@ -21,3 +21,6 @@ process.on("SIGINT", () => {
   console.log("\nGracefully shutting down...");
   process.exit(0);
 });
+
+export type { ScriptsConfiguration } from '@/cli/configuration/types';
+

@@ -27,6 +27,11 @@ export function parseArguments(argv: NodeJS.Process["argv"] = process.argv) {
       description: "Hide package.json scripts",
       default: false,
     })
+    .option("script", {
+      alias: "s",
+      type: "string",
+      describe: "Run a specific script by alias/name and exit",
+    })
     .help()
     .alias("help", "h")
     .parseSync();

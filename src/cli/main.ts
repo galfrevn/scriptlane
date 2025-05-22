@@ -22,6 +22,13 @@ export async function run() {
     ...configuredScripts,
   };
 
+  if (context.directScriptToRun) {
+    const { runScript } = await import("./utils/run-script");
+    return runScript(context.directScriptToRun, {
+      scripts: availableScriptsToExecute,
+    });
+  }
+
   await renderScriptSelectionUI({
     scripts: availableScriptsToExecute,
     customization: {

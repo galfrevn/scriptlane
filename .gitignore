@@ -3,3 +3,6 @@ node_modules/
 
 # Build output
 dist/
+
+# Testing configuration file
+src/example/**

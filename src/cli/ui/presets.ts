@@ -5,9 +5,10 @@ export const defaultPreset = {
     bold: (str: string) => chalk.bold(str),
   },
   colors: {
-    debug: (str: string) => chalk.bgCyan.white(str),
-    warning: (str: string) => chalk.bgGray.bold.white(str),
+    debug: (str: string) => chalk.bgCyan.bold.white(str),
     black: (str: string) => chalk.black(str),
+    error: (str: string) => chalk.bgRed.bold.white(str),
+    warning: (str: string) => chalk.bgGray.bold.white(str),
   },
 };
 

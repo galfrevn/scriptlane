@@ -12,6 +12,7 @@ setRunningContext({
   isHidingPackageJsonScripts: args.hideScripts,
   configurationFilePath: args.config,
   currentPreset: args.preset,
+  directScriptToRun: args.script,
 });
 
 run();

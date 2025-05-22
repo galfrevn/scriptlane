@@ -20,5 +20,9 @@ export function log(message: string, level: LogLevel = fallbackLogLevel): void {
     return console.log(`${preset.colors.warning("[WARNING]")} ${message}`);
   }
 
+  if (level === "ERROR") {
+    return console.log(`${preset.colors.error("[ERROR]")} ${message}`);
+  }
+
   return console.log(`[${level.toUpperCase()}] ${message}`);
 }

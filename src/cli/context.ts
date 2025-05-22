@@ -3,6 +3,7 @@ interface CliConfigurationContext {
   isDebugMode?: boolean;
   isHidingPackageJsonScripts?: boolean;
   currentPreset?: string;
+  directScriptToRun?: string;
 }
 
 let _runningContext: CliConfigurationContext = {
@@ -10,6 +11,7 @@ let _runningContext: CliConfigurationContext = {
   isHidingPackageJsonScripts: false,
   configurationFilePath: undefined,
   currentPreset: "default",
+  directScriptToRun: undefined,
 };
 
 export function setRunningContext(context: CliConfigurationContext): void {

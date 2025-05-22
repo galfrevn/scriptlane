@@ -1,6 +1,6 @@
 {
   "name": "scriptlane",
-  "version": "0.0.5",
+  "version": "0.0.6",
   "description": "A modern CLI multiplexer for running, grouping, and managing project scripts with style.",
   "bin": {
     "scriptlane": "dist/index.js"

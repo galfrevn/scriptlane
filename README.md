@@ -182,9 +182,14 @@ npx scriptlane -s "Build" # Command name or alias
 
 #### Options
 
-Flag	Description
--s, --script	Run a script directly by name
--c, --config	Path to custom scripts config file
+| Flag | Description |
+|------|-------------|
+| -c, --config | Path to custom scripts config file |
+| -d, --debug | Enable debug logging |
+| -p, --preset | Theme preset for the CLI |
+| -hs, --hide-scripts | Hide package.json scripts |
+| -s, --script | Run a specific script by alias/name and exit |
+| -h, --help | Show help |
 
 For more examples, see the documentation
 
@@ -239,29 +244,13 @@ Distributed under the Unlicense License. See `LICENSE.txt` for more information.
 
 ## Contact
 
-Your Name - [@your_twitter](https://twitter.com/your_username) - email@example.com
+Your Name - [@galfrevn](https://twitter.com/galfrevn) - galfre.vn@gmail.com
 
-Project Link: [https://github.com/your_username/repo_name](https://github.com/your_username/repo_name)
+Project Link: [https://github.com/galfrevn/scriptlane](https://github.com/galfrevn/scriptlane)
 
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- ACKNOWLEDGMENTS -->
-
-## Acknowledgments
-
-Use this space to list resources you find helpful and would like to give credit to. I've included a few of my favorites to kick things off!
-
-- [Choose an Open Source License](https://choosealicense.com)
-- [GitHub Emoji Cheat Sheet](https://www.webpagefx.com/tools/emoji-cheat-sheet)
-- [Malven's Flexbox Cheatsheet](https://flexbox.malven.co/)
-- [Malven's Grid Cheatsheet](https://grid.malven.co/)
-- [Img Shields](https://shields.io)
-- [GitHub Pages](https://pages.github.com)
-- [Font Awesome](https://fontawesome.com)
-- [React Icons](https://react-icons.github.io/react-icons/search)
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
-
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
 
